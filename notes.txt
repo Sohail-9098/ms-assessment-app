@@ -20,3 +20,5 @@ A question should have
 2. correct answer
 3. mark
 4. type (single choice/multiple choices/text based) -- later
+
+user logs in and the he clicks on start test.. ? Should a test be assigned to him?
