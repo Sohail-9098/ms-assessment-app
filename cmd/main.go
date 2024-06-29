@@ -3,16 +3,16 @@ package main
 import (
 	"fmt"
 
-	"github.com/Sohail-9098/ms-assessment-app/model/assessment"
-	"github.com/Sohail-9098/ms-assessment-app/model/question"
-	"github.com/Sohail-9098/ms-assessment-app/model/result"
-	"github.com/Sohail-9098/ms-assessment-app/model/user"
+	"github.com/Sohail-9098/ms-assessment-app/internal/assessment"
+	"github.com/Sohail-9098/ms-assessment-app/internal/question"
+	"github.com/Sohail-9098/ms-assessment-app/internal/result"
+	"github.com/Sohail-9098/ms-assessment-app/internal/user"
 )
 
 func main() {
 	fmt.Println("Welcome to Assessment App!")
 	newUser := user.User{UserId: 1, UserName: "Tarannum Ali"}
-	newAssessment := assessment.Assessment{Questions: question.QuestionSet, TimeLimit: 30}
+	newAssessment := assessment.Assessment{Questions: question.QuestionSet[:2], TimeLimit: 30}
 	userResult := result.Result{Assessment: newAssessment}
 	for _, question := range newAssessment.Questions {
 		fmt.Println(question.QuestionText)

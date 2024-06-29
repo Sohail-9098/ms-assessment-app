@@ -1,7 +1,7 @@
 package assessment
 
 import (
-	"github.com/Sohail-9098/ms-assessment-app/model/question"
+	"github.com/Sohail-9098/ms-assessment-app/internal/question"
 )
 
 type Assessment struct {

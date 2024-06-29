@@ -1,7 +1,7 @@
 package user
 
 import (
-	"github.com/Sohail-9098/ms-assessment-app/model/result"
+	"github.com/Sohail-9098/ms-assessment-app/internal/result"
 )
 
 type User struct {
