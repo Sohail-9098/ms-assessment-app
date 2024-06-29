@@ -1,6 +1,7 @@
 package question
 
 type MultipleChoiceQuestion struct {
+	QuestionId                   int
 	QuestionText                 string
 	Options                      []string
 	PositiveMarks, NegativeMarks int
