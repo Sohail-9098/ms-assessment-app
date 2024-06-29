@@ -12,7 +12,7 @@ import (
 func main() {
 	fmt.Println("Welcome to Assessment App!")
 	newUser := user.User{UserId: 1, UserName: "Tarannum Ali"}
-	newAssessment := assessment.Assessment{Questions: question.QuestionSet[:2], TimeLimit: 30}
+	newAssessment := assessment.Assessment{Questions: question.QuestionSet[:2]}
 	userResult := result.Result{Assessment: newAssessment}
 	for _, question := range newAssessment.Questions {
 		fmt.Println(question.QuestionText)

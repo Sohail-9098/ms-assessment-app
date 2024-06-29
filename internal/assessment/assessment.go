@@ -6,9 +6,4 @@ import (
 
 type Assessment struct {
 	Questions []question.MultipleChoiceQuestion
-	TimeLimit int
-}
-
-func NewAssessment() Assessment {
-	return Assessment{}
 }
