@@ -23,14 +23,15 @@ func main() {
 		var answer int
 		fmt.Scanln(&answer)
 		if question.Options[answer-1] == question.CorrectAnswer() {
+			userResult.Correct++
 			userResult.MarksObtained += question.Mark
 		} else {
+			userResult.Incorrect++
 			userResult.MarksObtained -= 1
 		}
 	}
 	newUser.TestResult = append(newUser.TestResult, userResult)
 	fmt.Println("Your Result: ")
-	fmt.Printf("User Name: %v, User Score: %v\n", newUser.UserName, newUser.TestResult[0].MarksObtained)
-	fmt.Printf("%d/%d\n", userResult.MarksObtained, userResult.MarksTotal)
-	fmt.Printf("%v percent \n", userResult.MarksObtained*100/userResult.MarksTotal)
+	fmt.Printf("User Name: %v, Correct: %v, Incorrect: %v\n", newUser.UserName, newUser.TestResult[0].Correct, newUser.TestResult[0].Incorrect)
+	fmt.Printf("Total Score: %d/%d\n", userResult.MarksObtained, userResult.MarksTotal)
 }
