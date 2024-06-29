@@ -1,0 +1,22 @@
+ms-assessment-app
+
+story?
+
+A user should be able to take test and submit it
+
+User should have - 
+
+1. user data
+2. test taken
+3. result for the test
+
+Test should have - 
+1. questions
+2. test time limit
+
+A question should have
+
+1. options
+2. correct answer
+3. mark
+4. type (single choice/multiple choices/text based) -- later
