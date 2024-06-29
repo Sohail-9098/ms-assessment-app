@@ -7,3 +7,7 @@ import (
 type Assessment struct {
 	Questions []question.MultipleChoiceQuestion
 }
+
+func NewAssessment() Assessment {
+	return Assessment{}
+}

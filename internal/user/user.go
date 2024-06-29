@@ -9,3 +9,7 @@ type User struct {
 	UserName   string
 	TestResult []result.Result
 }
+
+func NewUser() User {
+	return User{}
+}

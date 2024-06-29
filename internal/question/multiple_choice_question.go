@@ -1,12 +1,12 @@
 package question
 
 type MultipleChoiceQuestion struct {
-	QuestionText  string
-	Options       []string
-	Mark          int
-	correctAnswer string
+	QuestionText                 string
+	Options                      []string
+	PositiveMarks, NegativeMarks int
+	correctAnswer                string
 }
 
-func (mcq *MultipleChoiceQuestion) CorrectAnswer() string {
-	return mcq.correctAnswer
+func (mcq *MultipleChoiceQuestion) IsCorrectAnswer(answer string) bool {
+	return mcq.correctAnswer == answer
 }
