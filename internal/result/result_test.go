@@ -8,6 +8,14 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+var testQuestion question.MultipleChoiceQuestion = question.MultipleChoiceQuestion{
+	QuestionId:    1,
+	QuestionText:  "What is the capital of France",
+	Options:       []string{"Delhi", "Stockholm", "Paris", "London"},
+	PositiveMarks: 5,
+	NegativeMarks: 0,
+}
+
 func TestResult_NewResultEmptyQuestionList(t *testing.T) {
 	testAssessment := assessment.NewAssessment()
 	expectedResult := Result{
@@ -23,7 +31,8 @@ func TestResult_NewResultEmptyQuestionList(t *testing.T) {
 
 func TestResult_NewResultWithQuestions(t *testing.T) {
 	testAssessment := assessment.NewAssessment()
-	testAssessment.Questions = question.QuestionSet
+	testQuestion.SetCorrectAnswer("Paris")
+	testAssessment.Questions = []question.MultipleChoiceQuestion{testQuestion}
 	expectedResult := Result{
 		Assessment:    testAssessment,
 		Correct:       0,
@@ -36,7 +45,8 @@ func TestResult_NewResultWithQuestions(t *testing.T) {
 }
 
 func TestResult_AccessAnswerValid(t *testing.T) {
-	q := question.QuestionSet[0]
+	testQuestion.SetCorrectAnswer("Paris")
+	q := testQuestion
 	a := assessment.NewAssessment()
 	a.Questions = append(a.Questions, q)
 	r := NewResult(a)
@@ -48,7 +58,8 @@ func TestResult_AccessAnswerValid(t *testing.T) {
 }
 
 func TestResult_AccessAnswerInalid(t *testing.T) {
-	q := question.QuestionSet[0]
+	testQuestion.SetCorrectAnswer("Paris")
+	q := testQuestion
 	a := assessment.NewAssessment()
 	a.Questions = append(a.Questions, q)
 	r := NewResult(a)

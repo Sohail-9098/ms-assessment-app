@@ -20,7 +20,13 @@ func main() {
 	newAssessment := assessment.NewAssessment()
 
 	// Assign Questions
-	newAssessment.Questions = question.QuestionSet[:1]
+	newQuestion := question.MultipleChoiceQuestion{
+		QuestionText:  "What is the capital of France?",
+		Options:       []string{"Berlin", "Madrid", "Paris", "Lisbon"},
+		PositiveMarks: 5,
+	}
+	newQuestion.SetCorrectAnswer("Paris")
+	newAssessment.Questions = []question.MultipleChoiceQuestion{newQuestion}
 
 	// Create User Result
 	assessmentResult := result.NewResult(newAssessment)
