@@ -17,12 +17,12 @@ var testQuestion question.MultipleChoiceQuestion = question.MultipleChoiceQuesti
 }
 
 func TestResult_NewResultEmptyQuestionList(t *testing.T) {
-	testAssessment := assessment.NewAssessment()
+	testAssessment := assessment.NewAssessment([]question.MultipleChoiceQuestion{testQuestion})
 	expectedResult := Result{
 		Assessment:    testAssessment,
 		Correct:       0,
 		Incorrect:     0,
-		MarksTotal:    0,
+		MarksTotal:    5,
 		MarksObtained: 0,
 	}
 	actualResult := NewResult(testAssessment)
@@ -30,7 +30,7 @@ func TestResult_NewResultEmptyQuestionList(t *testing.T) {
 }
 
 func TestResult_NewResultWithQuestions(t *testing.T) {
-	testAssessment := assessment.NewAssessment()
+	testAssessment := assessment.NewAssessment([]question.MultipleChoiceQuestion{testQuestion})
 	testQuestion.SetCorrectAnswer("Paris")
 	testAssessment.Questions = []question.MultipleChoiceQuestion{testQuestion}
 	expectedResult := Result{
@@ -47,8 +47,7 @@ func TestResult_NewResultWithQuestions(t *testing.T) {
 func TestResult_AccessAnswerValid(t *testing.T) {
 	testQuestion.SetCorrectAnswer("Paris")
 	q := testQuestion
-	a := assessment.NewAssessment()
-	a.Questions = append(a.Questions, q)
+	a := assessment.NewAssessment([]question.MultipleChoiceQuestion{testQuestion})
 	r := NewResult(a)
 	r.AssessAnswer(q, "Paris")
 	require.Equal(t, 1, r.Correct)
@@ -60,8 +59,7 @@ func TestResult_AccessAnswerValid(t *testing.T) {
 func TestResult_AccessAnswerInalid(t *testing.T) {
 	testQuestion.SetCorrectAnswer("Paris")
 	q := testQuestion
-	a := assessment.NewAssessment()
-	a.Questions = append(a.Questions, q)
+	a := assessment.NewAssessment([]question.MultipleChoiceQuestion{testQuestion})
 	r := NewResult(a)
 	r.AssessAnswer(q, "London")
 	require.Equal(t, 0, r.Correct)

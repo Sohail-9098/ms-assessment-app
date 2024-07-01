@@ -21,4 +21,10 @@ A question should have
 3. mark
 4. type (single choice/multiple choices/text based) -- later
 
-user logs in and the he clicks on start test.. ? Should a test be assigned to him?
+user logs in and the he clicks on start test.. ? 
+
+There should also be an admin 
+
+1. admin can create assessments (add questions)
+2. admin can assign assessments to user
+3. admin can view user result

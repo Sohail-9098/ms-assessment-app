@@ -17,16 +17,13 @@ func main() {
 	newUser.UserName = "John Wick"
 
 	// Creates Assessment
-	newAssessment := assessment.NewAssessment()
-
-	// Assign Questions
 	newQuestion := question.MultipleChoiceQuestion{
 		QuestionText:  "What is the capital of France?",
 		Options:       []string{"Berlin", "Madrid", "Paris", "Lisbon"},
 		PositiveMarks: 5,
 	}
 	newQuestion.SetCorrectAnswer("Paris")
-	newAssessment.Questions = []question.MultipleChoiceQuestion{newQuestion}
+	newAssessment := assessment.NewAssessment([]question.MultipleChoiceQuestion{newQuestion})
 
 	// Create User Result
 	assessmentResult := result.NewResult(newAssessment)
