@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/Sohail-9098/ms-assessment-app/internal/assessment"
+	"github.com/Sohail-9098/ms-assessment-app/internal/db"
 	"github.com/Sohail-9098/ms-assessment-app/internal/question"
 	"github.com/Sohail-9098/ms-assessment-app/internal/result"
 	"github.com/Sohail-9098/ms-assessment-app/internal/user"
@@ -16,21 +17,18 @@ func main() {
 	newUser.UserId = 1
 	newUser.UserName = "John Wick"
 
-	// Creates Assessment
-	newQuestion := question.MultipleChoiceQuestion{
-		QuestionText:  "What is the capital of France?",
-		Options:       []string{"Berlin", "Madrid", "Paris", "Lisbon"},
-		PositiveMarks: 5,
-	}
-	newQuestion.SetCorrectAnswer("Paris")
-	newAssessment := assessment.NewAssessment([]question.MultipleChoiceQuestion{newQuestion})
+	// Creates Assessment and save it to db
+	newAssessment := assessment.NewAssessment([]question.MultipleChoiceQuestion{db.GetMCQById(1), db.GetMCQById(2), db.GetMCQById(3)})
+	db.AddAssessment(newAssessment)
+
+	// Fetch Assessment
+	assessmentToTake := db.GetAssessmentById(1)
 
 	// Create User Result
-	assessmentResult := result.NewResult(newAssessment)
-	assessmentResult.Assessment = newAssessment
+	assessmentResult := result.NewResult(assessmentToTake)
 
 	// Start the assessment
-	for _, question := range newAssessment.Questions {
+	for _, question := range assessmentToTake.Questions {
 		// Ask Question
 		fmt.Println(question.QuestionText)
 

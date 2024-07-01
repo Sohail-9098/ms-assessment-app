@@ -28,7 +28,3 @@ func (mcq *MultipleChoiceQuestion) CorrectAnswer() string {
 func (mcq *MultipleChoiceQuestion) SetCorrectAnswer(answer string) {
 	mcq.correctAnswer = answer
 }
-
-func (mcq *MultipleChoiceQuestion) AddQuestionToDb() {
-	mcq.addQuestionToDb()
-}

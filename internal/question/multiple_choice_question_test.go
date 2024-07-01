@@ -19,8 +19,9 @@ func TestMultipleChoiceQuestion_CorrectAnswerInvalid(t *testing.T) {
 }
 
 func TestMultipleChoiceQuestion_AddQuestionToDb(t *testing.T) {
-	question := TestQuestionSet[9]
-	question.AddQuestionToDb()
+	// commenting to avoid adding same questions while testing
+	// question := TestQuestionSet[9]
+	// question.AddQuestionToDb()
 }
 
 var TestQuestionSet = []MultipleChoiceQuestion{

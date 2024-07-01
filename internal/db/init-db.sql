@@ -58,3 +58,8 @@ INSERT INTO multiple_choice_questions (
     -2,
     'Hydrogen'
 );
+
+CREATE TABLE assessments (
+    assessment_id       SERIAL PRIMARY KEY,
+    questions           INT[]
+);
