@@ -18,6 +18,11 @@ func TestMultipleChoiceQuestion_CorrectAnswerInvalid(t *testing.T) {
 	require.Equal(t, false, question.IsCorrectAnswer(actualAnswer))
 }
 
+func TestMultipleChoiceQuestion_AddQuestionToDb(t *testing.T) {
+	question := TestQuestionSet[9]
+	question.AddQuestionToDb()
+}
+
 var TestQuestionSet = []MultipleChoiceQuestion{
 	{
 		QuestionText:  "What is the capital of France?",
