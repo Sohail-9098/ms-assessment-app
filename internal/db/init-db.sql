@@ -63,3 +63,20 @@ CREATE TABLE assessments (
     assessment_id       SERIAL PRIMARY KEY,
     questions           INT[]
 );
+
+CREATE TABLE user_results(
+    id                  SERIAL PRIMARY KEY,
+    user_id             INT,
+    assessment_id       INT,
+    correct_answers     INT,
+    incorrect_answers   INT,
+    marks_total         INT, 
+    marks_obtained      INT 
+);
+
+CREATE TABLE assessment_user(
+    user_id                 SERIAL PRIMARY KEY,
+    user_name               VARCHAR
+);
+
+INSERT INTO assessment_user (user_name) VALUES ('John Wick');
