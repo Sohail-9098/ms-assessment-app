@@ -80,3 +80,5 @@ CREATE TABLE assessment_user(
 );
 
 INSERT INTO assessment_user (user_name) VALUES ('John Wick');
+
+CREATE TABLE user_assignment(assignment_id SERIAL PRIMARY KEY, user_id INT, assessment_id INT);

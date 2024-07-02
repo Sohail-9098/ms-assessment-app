@@ -5,6 +5,7 @@ import (
 
 	"github.com/Sohail-9098/ms-assessment-app/internal/assessment"
 	"github.com/Sohail-9098/ms-assessment-app/internal/question"
+	"github.com/Sohail-9098/ms-assessment-app/internal/user"
 	"github.com/lib/pq"
 )
 
@@ -49,7 +50,7 @@ func GetAssessmentById(assessmentId int) assessment.Assessment {
 
 	var questionIds []int
 
-	for _, id := range rawIds{
+	for _, id := range rawIds {
 		questionIds = append(questionIds, int(id))
 	}
 
@@ -60,4 +61,16 @@ func GetAssessmentById(assessmentId int) assessment.Assessment {
 
 	newAssessment.Questions = questions
 	return newAssessment
+}
+
+func AssignAssessment(user user.User, assessment assessment.Assessment) {
+	conn := connect()
+	defer close(conn)
+
+	query := "INSERT INTO user_assignment VALUES($1, $2);"
+	_, err := conn.Exec(query, user.UserId, assessment.AssessmentId)
+	if err != nil {
+		log.Fatalf("error inserting assignment : %v", err)
+	}
+
 }
