@@ -6,7 +6,7 @@ import (
 	"github.com/Sohail-9098/ms-assessment-app/internal/user"
 )
 
-func GetUserId(userId int) user.User {
+func GetUserById(userId int) user.User {
 	conn := connect()
 	defer close(conn)
 

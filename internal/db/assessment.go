@@ -74,3 +74,25 @@ func AssignAssessment(user user.User, assessment assessment.Assessment) {
 	}
 
 }
+
+func GetAssignment(user user.User) assessment.Assessment {
+	conn := connect()
+	defer close(conn)
+
+	query := "SELECT assessment_id FROM user_assignment WHERE user_id=$1;"
+	row, err := conn.Query(query, user.UserId)
+	if err != nil {
+		log.Fatalf("error reading assignment: %v", err)
+	}
+
+	var rawId int32
+	for row.Next() {
+		err := row.Scan(&rawId)
+		if err != nil {
+			log.Fatalf("error scanning row: %v", err)
+		}
+	}
+
+	assignedAssessment := GetAssessmentById(int(rawId))
+	return assignedAssessment
+}

@@ -5,12 +5,13 @@ import (
 
 	"github.com/Sohail-9098/ms-assessment-app/internal/db"
 	"github.com/Sohail-9098/ms-assessment-app/internal/result"
+	"github.com/Sohail-9098/ms-assessment-app/internal/server"
 )
 
-func main() {
+func SomeFunction() {
 	fmt.Println("Welcome to Assessment App!")
 	// User LogsIn
-	newUser := db.GetUserId(1)
+	newUser := db.GetUserById(1)
 
 	// Creates Assessment and save it to db
 	// newAssessment := assessment.NewAssessment([]question.MultipleChoiceQuestion{db.GetMCQById(1), db.GetMCQById(2), db.GetMCQById(3)})
@@ -48,4 +49,8 @@ func main() {
 		fmt.Printf("User Name: %v, Correct: %v, Incorrect: %v\n", newUser.UserName, result.Correct, result.Incorrect)
 		fmt.Printf("Total Score: %d/%d\n", result.MarksObtained, result.MarksTotal)
 	}
+}
+
+func main() {
+	server.StartServer()
 }
